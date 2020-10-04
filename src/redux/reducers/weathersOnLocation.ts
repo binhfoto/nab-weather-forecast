@@ -1,9 +1,9 @@
 import { WeathersOnLocation } from "../../interfaces/weathersOnLocation";
-import { ADD_WEATHERS_ON_LOCATION, WeathersOnLocationAction } from "../actions/weather";
+import { FETCH_WEATHERS_ON_LOCATION_SUCCESS, WeathersOnLocationSuccessAction } from "../actions/weather";
 
 export default function weathersOnLocationsReducer(
     state: WeathersOnLocation[] = [],
-    action: WeathersOnLocationAction,
+    action: WeathersOnLocationSuccessAction,
 ): WeathersOnLocation[] {
     const {
         type,
@@ -11,7 +11,7 @@ export default function weathersOnLocationsReducer(
     } = action;
 
     switch (type) {
-        case ADD_WEATHERS_ON_LOCATION:
+        case FETCH_WEATHERS_ON_LOCATION_SUCCESS:
             return [weathersOnLocation, ...state];
         default:
             return state;
