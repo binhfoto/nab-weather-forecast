@@ -1,5 +1,6 @@
 import { Location } from "./location";
 import { WeathersOnLocation } from "./weathersOnLocation";
+import { ErrorWrapper } from "./error";
 
 export interface State {
     isProcessing: boolean;
@@ -8,4 +9,5 @@ export interface State {
         suggestions: Location[];
     };
     weathersOnLocations: WeathersOnLocation[];
+    error?: ErrorWrapper | null;
 }
