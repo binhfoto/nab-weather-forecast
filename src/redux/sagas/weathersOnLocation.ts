@@ -8,6 +8,7 @@ import {
     fetchWeathersOnLocationFailed,
     fetchWeathersOnLocationSuccess,
 } from "../actions/weather";
+import { isProcessingAction } from "../actions/processing";
 
 function* weathersOnLocation(action: WeathersOnLocationRequestAction) {
     try {
@@ -15,13 +16,17 @@ function* weathersOnLocation(action: WeathersOnLocationRequestAction) {
             payload: { locationId },
         } = action;
 
+        yield put(isProcessingAction(true));
+
         const weathersOnLocation: WeathersOnLocation = yield call(getWeatherOnLocationApi, locationId);
-        put(fetchWeathersOnLocationSuccess(weathersOnLocation));
+        yield put(fetchWeathersOnLocationSuccess(weathersOnLocation));
     } catch (error) {
-        put(fetchWeathersOnLocationFailed(error));
+        yield put(fetchWeathersOnLocationFailed(error));
+    } finally {
+        yield put(isProcessingAction(false));
     }
 }
 
-export default function weathersOnLocationWatcher() {
-    takeEvery(FETCH_WEATHERS_ON_LOCATION_REQUEST, weathersOnLocation);
+export default function* weathersOnLocationWatcher() {
+    yield takeEvery(FETCH_WEATHERS_ON_LOCATION_REQUEST, weathersOnLocation);
 }

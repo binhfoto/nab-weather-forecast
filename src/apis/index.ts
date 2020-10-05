@@ -3,8 +3,6 @@ import { Location, LocationResponse } from "../interfaces/location";
 import { Weather } from "../interfaces/weather";
 import { WeathersOnLocation, WeathersOnLocationResponse } from "../interfaces/weathersOnLocation";
 
-axios.defaults.baseURL = "https://www.metaweather.com";
-
 export async function searchLocation(location: string): Promise<Location[]> {
     const { data } = await axios.get<LocationResponse[]>("/api/location/search/", {
         params: {
@@ -25,10 +23,10 @@ export async function searchLocation(location: string): Promise<Location[]> {
 }
 
 export async function getWeatherOnLocation(location: number): Promise<WeathersOnLocation> {
-    const { data } = await axios.get<WeathersOnLocationResponse>(`/api/location/${location}`);
-    const { woeid: locationId, consolidated_weather: consolidatedWeather } = data;
+    const { data } = await axios.get<WeathersOnLocationResponse>(`/api/location/${location}/`);
+    const { woeid: locationId, consolidated_weather: consolidatedWeather, title: locationTitle } = data;
 
-    const weathers: Weather[] = consolidatedWeather.map(
+    const weathers: Weather[] = consolidatedWeather.slice(0, 5).map(
         (weather): Weather => {
             const { id, applicable_date: applicableDate, min_temp: minTemp, max_temp: maxTemp } = weather;
             return {
@@ -42,6 +40,7 @@ export async function getWeatherOnLocation(location: number): Promise<WeathersOn
 
     return {
         locationId,
+        locationTitle,
         weathers,
     };
 }

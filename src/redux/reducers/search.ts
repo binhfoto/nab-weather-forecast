@@ -1,31 +1,22 @@
 import { LocationAction, SET_LOCATION } from "../actions/location";
 import { combineReducers } from "redux";
 import { Location } from "../../interfaces/location";
-import { FETCH_SUGGESTIONS_SUCCESS, SuggestionsAction } from "../actions/suggestions";
+import { CLEAR_SUGGESTIONS, FETCH_SUGGESTIONS_SUCCESS, SuggestionsAction } from "../actions/suggestions";
 
 function locationReducer(state: string = "", action: LocationAction): string {
-    const {
-        type,
-        payload: { location },
-    } = action;
-
-    switch (type) {
+    switch (action.type) {
         case SET_LOCATION:
-            return location;
+            return action.payload.location;
         default:
             return state;
     }
 }
 
 function suggestionsReducer(state: Location[] = [], action: SuggestionsAction): Location[] {
-    const {
-        type,
-        payload: { suggestions },
-    } = action;
-
-    switch (type) {
+    switch (action.type) {
+        case CLEAR_SUGGESTIONS:
         case FETCH_SUGGESTIONS_SUCCESS:
-            return suggestions;
+            return action.payload.suggestions;
         default:
             return state;
     }
