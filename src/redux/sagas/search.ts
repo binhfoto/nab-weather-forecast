@@ -8,6 +8,7 @@ import {
     fetchSuggestionsSuccessAction,
     fetchSuggestionsFailedAction,
 } from "../actions/suggestions";
+import { isProcessingAction } from "../actions/processing";
 
 function* searchLocation(action: SuggestionsRequestAction) {
     try {
@@ -15,10 +16,15 @@ function* searchLocation(action: SuggestionsRequestAction) {
             payload: { location },
         } = action;
 
+        yield put(isProcessingAction(true));
+
         const suggestions: Location[] = yield call(searchLocationApi, location);
-        put(fetchSuggestionsSuccessAction(suggestions));
+
+        yield put(fetchSuggestionsSuccessAction(suggestions));
     } catch (error) {
-        put(fetchSuggestionsFailedAction(error));
+        yield put(fetchSuggestionsFailedAction(error));
+    } finally {
+        yield put(isProcessingAction(false));
     }
 }
 

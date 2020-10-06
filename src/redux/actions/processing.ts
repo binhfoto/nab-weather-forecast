@@ -8,7 +8,7 @@ export interface ProcessingPayload {
 
 export interface ProcessingAction extends Action<ProcessingPayload> {}
 
-export function isProcessing(isProcessing: boolean): ProcessingAction {
+export function isProcessingAction(isProcessing: boolean): ProcessingAction {
     return {
         type: IS_PROCESSING,
         payload: { isProcessing },

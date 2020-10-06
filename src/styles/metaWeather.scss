@@ -1,0 +1,49 @@
+.container {
+    width: 1200px;
+
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.meta-weather-list {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.meta-weather {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: 5px;
+    padding: 10px;
+
+    .city {
+        flex-basis: 20%;
+    }
+
+    .weather-item {
+        flex-basis: 15%;
+
+        dd {
+            margin-left: 0;
+            line-height: 18px;
+            font-size: 13px;
+        }
+    }
+
+    h2,
+    h3 {
+        margin: 0;
+
+        font-family: inherit;
+        font-weight: 500;
+        line-height: 1.1;
+
+        color: #337ab7;
+    }
+}

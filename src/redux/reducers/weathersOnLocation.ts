@@ -5,14 +5,9 @@ export default function weathersOnLocationsReducer(
     state: WeathersOnLocation[] = [],
     action: WeathersOnLocationSuccessAction,
 ): WeathersOnLocation[] {
-    const {
-        type,
-        payload: { weathersOnLocation },
-    } = action;
-
-    switch (type) {
+    switch (action.type) {
         case FETCH_WEATHERS_ON_LOCATION_SUCCESS:
-            return [weathersOnLocation, ...state];
+            return [action.payload.weathersOnLocation, ...state];
         default:
             return state;
     }

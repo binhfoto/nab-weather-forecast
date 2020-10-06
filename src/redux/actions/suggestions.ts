@@ -6,6 +6,8 @@ export const FETCH_SUGGESTIONS_REQUEST = "FETCH_SUGGESTIONS_REQUEST";
 export const FETCH_SUGGESTIONS_SUCCESS = "FETCH_SUGGESTIONS_SUCCESS";
 export const FETCH_SUGGESTIONS_FAILED = "FETCH_SUGGESTIONS_FAILED";
 
+export const CLEAR_SUGGESTIONS = "CLEAR_SUGGESTIONS";
+
 export interface SuggestionsRequestPayload {
     location: string;
 }
@@ -41,6 +43,15 @@ export function fetchSuggestionsFailedAction(error: ErrorWrapper): SuggestionsFa
         type: FETCH_SUGGESTIONS_FAILED,
         payload: {
             error,
+        },
+    };
+}
+
+export function clearSuggestionsAction(): SuggestionsAction {
+    return {
+        type: CLEAR_SUGGESTIONS,
+        payload: {
+            suggestions: [],
         },
     };
 }
