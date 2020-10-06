@@ -3,6 +3,7 @@ import format from "date-fns/format";
 import isToday from "date-fns/isToday";
 import isTomorrow from "date-fns/isTomorrow";
 
+const NOT_AVAILABLE = "N/A";
 const TODAY = "Today";
 const TOMORROW = "Tomorrow";
 const DATE_FORMAT = "yyyy-MM-dd";
@@ -13,6 +14,10 @@ function parseDate(date: string): Date {
 }
 
 export function formatDate(dateStr: string): string {
+    if (!dateStr) {
+        return NOT_AVAILABLE;
+    }
+
     const date = parseDate(dateStr);
 
     if (isToday(date)) {
