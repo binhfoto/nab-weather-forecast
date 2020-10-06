@@ -1,7 +1,7 @@
-import weathersOnLocationSelector from "../weathersOnLocation";
+import weathersOnLocationSelector from "./weathersOnLocation";
 
-import { State } from "../../../interfaces/state";
-import initialState from "../../initialState";
+import { State } from "../../interfaces/state";
+import initialState from "../initialState";
 
 describe("weathersOnLocationSelector", () => {
     const state: State = {

@@ -1,5 +1,5 @@
-import errorSelector from "../error";
-import initialState from "../../initialState";
+import errorSelector from "./error";
+import initialState from "../initialState";
 
 describe("error", () => {
     it("should return undefined error", () => {

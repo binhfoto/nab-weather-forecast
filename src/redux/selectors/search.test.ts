@@ -1,7 +1,7 @@
-import searchSelector from "../search";
+import searchSelector from "./search";
 
-import { State } from "../../../interfaces/state";
-import initialState from "../../initialState";
+import { State } from "../../interfaces/state";
+import initialState from "../initialState";
 
 describe("searachSelector", () => {
     const state: State = {
