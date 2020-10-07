@@ -10,9 +10,9 @@ export default function WeatherItem(props: WeatherItemProps) {
         <div className="weather-item">
             <h3>{formatDate(applicableDate)}</h3>
             <dd>
-                Max: {`${Math.floor(maxTemp)}°C`}
-                <br />
                 Min: {`${Math.floor(minTemp)}°C`}
+                <br />
+                Max: {`${Math.floor(maxTemp)}°C`}
             </dd>
         </div>
     );

@@ -12,9 +12,9 @@ describe("Weather", () => {
         expect(
             wrapper.contains(
                 <dd>
-                    Max: 33°C
-                    <br />
                     Min: 30°C
+                    <br />
+                    Max: 33°C
                 </dd>,
             ),
         ).toBe(true);
