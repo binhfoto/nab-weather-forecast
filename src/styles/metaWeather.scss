@@ -18,7 +18,7 @@
     flex-direction: row;
     margin-bottom: 10px;
 
-    border: 1px solid rgba(0,0,0,.125);
+    border: 1px solid rgba(0, 0, 0, 0.125);
     border-radius: 5px;
     padding: 10px;
 
@@ -46,4 +46,18 @@
 
         color: #337ab7;
     }
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    .end-of-row {
+        align-self: center;
+    }
+}
+
+.processing {
+    color: #337ab7;
 }
