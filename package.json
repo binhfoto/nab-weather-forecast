@@ -63,12 +63,12 @@
   "devDependencies": {
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.5",
+    "http-proxy-middleware": "^1.0.5",
     "husky": "^4.3.0",
     "lint-staged": "^10.4.0",
     "prettier": "^2.1.2",
     "react-test-renderer": "^16.13.1",
     "redux-devtools-extension": "^2.13.8",
     "redux-saga-test-plan": "^4.0.0-rc.3"
-  },
-  "proxy": "https://www.metaweather.com"
+  }
 }
