@@ -12,12 +12,13 @@ pipeline {
         stage('Install') {
             steps {
                 sh 'node --version'
-                sh 'npm install'
+                sh 'yarn --version'
+                sh 'yarn install'
             }
         }
         stage('Test') {
             steps {
-                sh 'npm test --watchAll=false'
+                sh 'yarn test --watchAll=false'
             }
         }
     }
